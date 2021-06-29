@@ -4,10 +4,10 @@ var reactionTime;
 
 $('.startBtn').click(function() {
     createCircle();
-    console.log("hello");
 });
 
 function createCircle() {
+  $('.description-wrapper').hide();
   var time = Math.random();
   time = time * 3000;
 
