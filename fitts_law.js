@@ -2,9 +2,10 @@ var clickedTime;
 var createdTime;
 var reactionTime;
 
-document.getElementById("startBtn").onclick = () => {
-  createCircle();
-};
+$('.startBtn').click(function() {
+    createCircle();
+    console.log("hello");
+});
 
 function createCircle() {
   var time = Math.random();
