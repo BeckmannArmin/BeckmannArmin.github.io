@@ -6,12 +6,25 @@
 }
 body {
     font-family: Poppins, sans-serif;
-    display: flex;
     background: var(--main-bg-color);
+    display: flex;
     justify-content: center;
     align-items: center;
     flex-flow: column;
 }
+
+.description-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    width: 100%;
+    position: relative;
+}
+
+.feedback {
+}
+
 body .startBtn {
     background: var(--button-color);
     border: none;
