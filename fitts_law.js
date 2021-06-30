@@ -160,19 +160,19 @@
 			var zeitdiff = klickzeit - startZeit;
 
 			if(runs <= 10) {
-				click_errors[0] = click_errors[0] - 1;
+				click_errors[4] = click_errors[4] - 1;
 				timesArr[4].push(zeitdiff);
 			} else if(runs <= 20) {
-				click_errors[1] = click_errors[1] - 1;
+				click_errors[3] = click_errors[3] - 1;
 				timesArr[3].push(zeitdiff);
 			} else if(runs <= 30) {
-				click_errors[2] = click_errors[2] - 1;
+				click_errors[3] = click_errors[3] - 1;
 				timesArr[2].push(zeitdiff);
 			} else if(runs <= 40) {
-				click_errors[3] = click_errors[3] - 1;
+				click_errors[2] = click_errors[2] - 1;
 				timesArr[1].push(zeitdiff);
 			} else {
-				click_errors[4] = click_errors[4] - 1;
+				click_errors[1] = click_errors[1] - 1;
 				timesArr[0].push(zeitdiff);
 			}
 
@@ -187,15 +187,15 @@
 	function clickHintergrund() {
         console.log("click");
 		if(runs <= 10) {
-			click_errors[0] = click_errors[0] + 1;
+			click_errors[4] = click_errors[4] + 1;
 		} else if(runs <= 20) {
-			click_errors[1] = click_errors[1] + 1;
+			click_errors[3] = click_errors[3] + 1;
 		} else if(runs <= 30) {
 			click_errors[2] = click_errors[2] + 1;
 		} else if(runs <= 40) {
-			click_errors[3] = click_errors[3] + 1;
+			click_errors[1] = click_errors[1] + 1;
 		} else {
-			click_errors[4] = click_errors[4] + 1;
+			click_errors[0] = click_errors[0] + 1;
 		}
 	}
 
