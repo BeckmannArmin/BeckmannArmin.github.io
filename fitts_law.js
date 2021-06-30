@@ -37,7 +37,7 @@
 
 		//Hide buttons and other elements
 		startStudyBtn.setAttribute("class","is--hidden button");
-		document.getElementById("send_mail").setAttribute("class","button is--hidden");
+
 		circle.setAttribute("class","");
 		document.getElementById("result").setAttribute("class","is--hidden");
 		descriptionWrapper.setAttribute("class","is--hidden");
@@ -58,16 +58,16 @@
 		size = ball.offsetWidth;
 
         // Runs - each run 10 clicks
-		if(runs <= 10) {
+		if(runs <= 1) {
 			size = 50;
 			setSize(50);
-		} else if (runs <= 20) {
+		} else if (runs <= 2) {
 			size = 30;
 			setSize(30);
-		} else if (runs <= 30) {
+		} else if (runs <= 3) {
 			size = 20;
 			setSize(20);
-		} else if (runs <= 40) {
+		} else if (runs <= 4) {
 			size = 10;
 			setSize(10);
 		} else {
@@ -126,6 +126,7 @@
             //sets the different values for all of our sizes and
             //inserts them into our "results" wrapper element
 			document.getElementById("size_"+size).innerHTML = "Größe: "+getsize(size)+"px<br/>click_errors: " + click_errors[size] + "<br/>Durchschnittszeit: " + averageTime;
+			document.getElementById("input_"+size).value = "Größe: "+getsize(size)+"px<br/>click_errors: " + click_errors[size] + "<br/>Durchschnittszeit: " + averageTime;
 
 			mailtext = mailtext + "size%3A"+getsize(size)+"px%0A";
 			mailtext = mailtext + "click_errors%3A"+click_errors[size]+"%0A";
@@ -159,24 +160,24 @@
 			var klickzeit = new Date().getTime();
 			var zeitdiff = klickzeit - startZeit;
 
-			if(runs <= 10) {
+			if(runs <= 1) {
 				click_errors[4] = click_errors[4] - 1;
 				timesArr[4].push(zeitdiff);
-			} else if(runs <= 20) {
+			} else if(runs <= 2) {
 				click_errors[3] = click_errors[3] - 1;
 				timesArr[3].push(zeitdiff);
-			} else if(runs <= 30) {
-				click_errors[2] = click_errors[2] - 1;
+			} else if(runs <= 3) {
+				click_errors[3] = click_errors[2] - 1;
 				timesArr[2].push(zeitdiff);
-			} else if(runs <= 40) {
-				click_errors[1] = click_errors[1] - 1;
+			} else if(runs <= 4) {
+				click_errors[2] = click_errors[1] - 1;
 				timesArr[1].push(zeitdiff);
 			} else {
-				click_errors[0] = click_errors[0] - 1;
+				click_errors[1] = click_errors[0] - 1;
 				timesArr[0].push(zeitdiff);
 			}
 
-			if(runs < 50){
+			if(runs < 5){
 				startStudy();
 			} else {
 				stopExperiment();
@@ -186,13 +187,13 @@
 
 	function clickHintergrund() {
         console.log("click");
-		if(runs <= 10) {
+		if(runs <= 1) {
 			click_errors[4] = click_errors[4] + 1;
-		} else if(runs <= 20) {
+		} else if(runs <= 2) {
 			click_errors[3] = click_errors[3] + 1;
-		} else if(runs <= 30) {
+		} else if(runs <= 3) {
 			click_errors[2] = click_errors[2] + 1;
-		} else if(runs <= 40) {
+		} else if(runs <= 4) {
 			click_errors[1] = click_errors[1] + 1;
 		} else {
 			click_errors[0] = click_errors[0] + 1;

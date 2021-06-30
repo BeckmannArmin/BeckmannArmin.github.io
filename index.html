@@ -15,38 +15,42 @@
 
   <body>
     <div id="area">
-      <div id="circle" class="is--hidden"></div>
-      <div id="description-wrapper">
-        <h1>
-          Studie zu Fitt´s Law im Rahmen der Master Vorlesung
-          <span class="is--italic">Methoden der empririshen Forschung</span>
-        </h1>
-        <p>
-          Es erscheint zufällig ein grüner Kreis, der möglichst schnell von den
-          Proband:innen angeklickt werden soll. Anschließend erscheint ein neuer
-          Kreis. Die Kreise haben verschiedene Größen. <br />
-          Der Test wird 3-mal wiederholt.
-        </p>
-      </div>
+		<div id="circle" class="is--hidden">
+		</div>
+		<div class="center">
+			<div id="description-wrapper">
+				<h1>Studie zu Fitt´s Law im Rahmen der Master Vorlesung <span class="is--italic">Methoden der empririshen Forschung</span></h1>
+				<p> Es erscheint zufällig ein grüner Kreis, der möglichst schnell von den Proband:innen angeklickt werden soll.
+                    Anschließend erscheint ein neuer Kreis. Die Kreise haben verschiedene Größen. <br> Der Test wird 3-mal
+                    wiederholt.</p>
+			</div>
 
-      <!-- The results from the participant user -->
-      <div id="result" class="is--hidden">
-        <h1>Ergebnisse:</h1>
-        <p id="size_0"></p>
-        <p id="size_1"></p>
-        <p id="size_2"></p>
-        <p id="size_3"></p>
-        <p id="size_4"></p>
-      </div>
-      <div class="btn-wrapper">
-        <div class="button is--hidden" id="send_mail">
-          <a class="sender" id="sender" href="mailto:arbe0006@stud.hs-kl.de?subject=Ergebnisse%20Test%201&body="
-            >Send results</a
-          >
-        </div>
-        <div class="button" id="startStudy">Experiment starten</div>
-      </div>
-    </div>
+            <!-- The results from the participant user -->
+			<div id="result" class="is--hidden">
+				<h1>Ergebnisse:</h1>
+
+				<p  id="size_0"></p>
+				<p  id="size_1"></p>
+				<p  id="size_2"></p>
+				<p  id="size_3"></p>
+				<p  id="size_4"></p>
+
+				<form action="https://formspree.io/f/xleallnb" method="POST">
+				<input name="input0" id="input_0" hidden></input>
+				<input name="input1" id="input_1" hidden></input>
+				<input name="input2" id="input_2" hidden></input>
+				<input name="input3" id="input_3" hidden></input>
+				<input name="input4" id="input_4" hidden></input>
+				<button type="submit" class="button">Send</button>
+				</form>
+>
+			</div>
+
+			<div class="button is--hidden" id="send_mail"><a class="sender" id="sender" href="mailto:arbe0006@stud.hs-kl.de">Send results</a></div>
+
+			<div class="button" id="startStudy">Experiment starten</div>
+		</div>
+</div>
 
     <script src="/fitts_law.js"></script>
   </body>
