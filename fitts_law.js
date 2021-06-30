@@ -30,7 +30,7 @@
         //The clicking errors made by the user
 		click_errors = [0,0,0,0,0];
         //mail goes to us
-		mailtext = "mailto:arbe0006@stud.hs-kl.de";
+		mailtext = "mailto:arbe0006@stud.hs-kl.de?subject=Ergebnisse&body=";
 		experimentActive = true;
         //The times array to store all of our times for each iteration
 		timesArr = [new Array(),new Array(),new Array(),new Array(),new Array()];

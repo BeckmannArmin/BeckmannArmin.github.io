@@ -54,18 +54,14 @@
           margin-right: auto;
       }
 
-      .btn-wrapper {
+      #result {
         max-width: 112rem;
+        margin-left: auto;
+        margin-right: auto;
       }
 
-      /* Support for clamp function */
-      @supports (padding-bottom: var(--clamp-padding-tb)) and (padding-top: var(--clamp-padding-tb)) {
-
-        #inner  {
-            padding-bottom: var(--clamp-padding-tb);
-            padding-top: var(--clamp-padding-tb);
-        }
-
+      .btn-wrapper {
+        max-width: 112rem;
       }
 
 	#circle {
