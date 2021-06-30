@@ -29,11 +29,13 @@
       h1 {
         font-size: clamp(2.4rem, calc(2.4rem + ((1vw - 0.48rem) * 1.9444)), 3.8rem);
         min-height: 0vw;
+        line-height: 1.5;
       }
 
       p {
         font-size: clamp(1.6rem, calc(1.6rem + ((1vw - 0.48rem) * 1.6667)), 2rem);
         min-height: 0vw;
+        line-height: 1.5;
       }
 
       #inner {
