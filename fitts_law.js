@@ -166,13 +166,13 @@
 				click_errors[3] = click_errors[3] - 1;
 				timesArr[3].push(zeitdiff);
 			} else if(runs <= 30) {
-				click_errors[3] = click_errors[3] - 1;
+				click_errors[2] = click_errors[2] - 1;
 				timesArr[2].push(zeitdiff);
 			} else if(runs <= 40) {
-				click_errors[2] = click_errors[2] - 1;
+				click_errors[1] = click_errors[1] - 1;
 				timesArr[1].push(zeitdiff);
 			} else {
-				click_errors[1] = click_errors[1] - 1;
+				click_errors[0] = click_errors[0] - 1;
 				timesArr[0].push(zeitdiff);
 			}
 

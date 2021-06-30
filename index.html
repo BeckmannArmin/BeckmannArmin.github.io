@@ -1,47 +1,53 @@
 <!DOCTYPE html>
 <!-- Armin Beckmann (872310), Lucas Schopp (874792)-->
 <html xmlns="http://www.w3.org/1999/xhtml">
-
-<head>
+  <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!--PERSONAL SCRIPT JavaScript-->
     <script type="text/javascript">
-        $(document).ready(function () {
-            console.log("jQuery works");
-        });
+      $(document).ready(function () {
+        console.log("jQuery works");
+      });
     </script>
 
     <link rel="stylesheet" type="text/css" href="/main.css" />
+  </head>
 
-</head>
-
-<body>
+  <body>
     <div id="area">
-		<div id="circle" class="is--hidden">
-		</div>
-		<div class="center">
-			<div id="description-wrapper">
-				<h1>Studie zu Fitt´s Law im Rahmen der Master Vorlesung <span class="is--italic">Methoden der empririshen Forschung</span></h1>
-				<p> Es erscheint zufällig ein grüner Kreis, der möglichst schnell von den Proband:innen angeklickt werden soll.
-                    Anschließend erscheint ein neuer Kreis. Die Kreise haben verschiedene Größen. <br> Der Test wird 3-mal
-                    wiederholt.</p>
-			</div>
+      <div id="circle" class="is--hidden"></div>
+      <div id="description-wrapper">
+        <h1>
+          Studie zu Fitt´s Law im Rahmen der Master Vorlesung
+          <span class="is--italic">Methoden der empririshen Forschung</span>
+        </h1>
+        <p>
+          Es erscheint zufällig ein grüner Kreis, der möglichst schnell von den
+          Proband:innen angeklickt werden soll. Anschließend erscheint ein neuer
+          Kreis. Die Kreise haben verschiedene Größen. <br />
+          Der Test wird 3-mal wiederholt.
+        </p>
+      </div>
 
-            <!-- The results from the participant user -->
-			<div id="result" class="is--hidden">
-				<h1>Ergebnisse:</h1>
-				<p id="size_0"></p>
-				<p id="size_1"></p>
-				<p id="size_2"></p>
-				<p id="size_3"></p>
-				<p id="size_4"></p>
-			</div>
-			<div class="button is--hidden" id="send_mail"><a class="sender" id="sender" href="mailto:arbe0006@stud.hs-kl.de">Send results</a></div>
-			<div class="button" id="startStudy">Experiment starten</div>
-		</div>
-</div>
+      <!-- The results from the participant user -->
+      <div id="result" class="is--hidden">
+        <h1>Ergebnisse:</h1>
+        <p id="size_0"></p>
+        <p id="size_1"></p>
+        <p id="size_2"></p>
+        <p id="size_3"></p>
+        <p id="size_4"></p>
+      </div>
+      <div class="btn-wrapper">
+        <div class="button is--hidden" id="send_mail">
+          <a class="sender" id="sender" href="mailto:arbe0006@stud.hs-kl.de"
+            >Send results</a
+          >
+        </div>
+        <div class="button" id="startStudy">Experiment starten</div>
+      </div>
+    </div>
 
     <script src="/fitts_law.js"></script>
-</body>
-
+  </body>
 </html>
