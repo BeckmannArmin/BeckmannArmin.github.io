@@ -19,13 +19,9 @@ $('.placeholder').on('click', function (ev) {
    console.log(value);
 
    $('select#gender').val(value);
+   $('.strikethrough').css({'text-decoration':"line-through"});
 
    $('.list__ul').find('li').eq(index).prependTo('.list__ul');
    $('.list__ul').toggle();
 
  });
-
- function val() {
-    d = document.getElementById("select#gender").value;
-    console.log(d);
-}

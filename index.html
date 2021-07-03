@@ -47,17 +47,16 @@
 				<input name="input4" id="input_4" hidden></input>
 
                 <!-- Gender and age selection for study purposes -->
-                <label for="gender">Please choose your gender</label>
-                    <select onchange="val()" name="gender" id="gender" required="true">
+                    <select name="gender" id="gender" required="true" hidden>
                         <option value="Choose" selected="" disabled="">Choose gender</option>
-                        <option value="1">Man</option>
-                        <option value="3">Woman</option>
-                        <option value="5">Non-Binary</option>
+                        <option value="Man">Man</option>
+                        <option value="Woman">Woman</option>
+                        <option value="Non-Binary">Non-Binary</option>
                     </select>
                 <br>
 
                   <!-- Just a fancy selector -->
-                  <div class="wrapper typo">Please choose a
+                  <div class="wrapper typo"><span class="strikethrough">Please select a</span>
                     <div class="list"><span class="placeholder">gender</span>
                         <ul class="list__ul">
                             <li><a href="">Man</a></li>
