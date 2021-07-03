@@ -29,8 +29,6 @@
 		runs = 0;
         //The clicking errors made by the user
 		click_errors = [0,0,0,0,0];
-        //mail goes to us
-		mailtext = "mailto:arbe0006@stud.hs-kl.de?subject=Ergebnisse&body=";
 		experimentActive = true;
         //The times array to store all of our times for each iteration
 		timesArr = [new Array(),new Array(),new Array(),new Array(),new Array()];
@@ -88,7 +86,7 @@
 		positionCircle(x,y);
 	}
 
-	//Prueft den distance zwischen den Kreisen
+	//Distance between our circles
 	function checkDistance(oldX, oldY, oldsize, newX, newY, newsize) {
 		var minimal = oldsize + 30 + newsize;
 		var diffX = oldX - newX;
@@ -97,7 +95,7 @@
 		return (distance >= minimal);
 	}
 
-	//Positioniere Ball an Position
+	//Position our ball absolute
 	function positionCircle(posX, posY) {
 		var ball = circle;
 		ball.style.position = "absolute";
@@ -128,9 +126,6 @@
 			document.getElementById("size_"+size).innerHTML = "Größe: "+getsize(size)+"px<br/>click_errors: " + click_errors[size] + "<br/>Durchschnittszeit: " + averageTime;
 			document.getElementById("input_"+size).value = "Größe: "+getsize(size)+"px<br/>click_errors: " + click_errors[size] + "<br/>Durchschnittszeit: " + averageTime;
 
-			mailtext = mailtext + "size%3A"+getsize(size)+"px%0A";
-			mailtext = mailtext + "click_errors%3A"+click_errors[size]+"%0A";
-			mailtext = mailtext + "Durchschnittszeit%3A"+averageTime+"ms%0A";
 		}
 		//Ausgabe der Ergebnisse
 		document.getElementById("result").setAttribute("class","");
