@@ -23,5 +23,5 @@ $('.placeholder').on('click', function (ev) {
 
    $('.list__ul').find('li').eq(index).prependTo('.list__ul');
    $('.list__ul').toggle();
-
+   checkDisabled()
  });

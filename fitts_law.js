@@ -21,8 +21,6 @@
 	// 4 = 50px
 	var click_errors = [0,0,0,0,0];
 
-	var mailtext = "";
-
 	//Start our study
 	function initStudy() {
 		//Init our study with 0 runs
@@ -138,6 +136,7 @@
 		startStudyBtn.setAttribute("class","button");
 		startStudyBtn.innerHTML = "Restart study";
 		circle.setAttribute("class","hidden");
+        checkDisabled();
 }
 
     //switch case statement for the different sizes: 5,10,20,30,50
@@ -196,6 +195,25 @@
 			click_errors[0] = click_errors[0] + 1;
 		}
 	}
+
+    // Checks if any inputs have been made
+    function checkDisabled() {
+        var gender = $('.placeholder');
+        var age = $('input#age');
+
+        if (gender.text() === '' || gender.text() === 'gender' || age.val() === '') {
+            $("button[type=submit]").prop("disabled", true);
+        } else  {
+            $("button[type=submit]").prop("disabled", false)
+        };
+
+        $("button[type=submit]:disabled").click(function () {
+            if (gender.text() === '' || gender.text() === 'gender') {
+                return false;
+            }
+            else return;
+        });
+    }
 
 	circle.addEventListener("click", clickBall);
 	area.addEventListener("click", clickHintergrund);

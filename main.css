@@ -33,10 +33,17 @@ body {
   width: 100vw;
 }
 
+h1,h2 {
+    min-height: 0vw;
+    line-height: 1.5;
+}
+
 h1 {
   font-size: clamp(2.4rem, calc(2.4rem + ((1vw - 0.48rem) * 1.9444)), 3.8rem);
-  min-height: 0vw;
-  line-height: 1.5;
+}
+
+h2 {
+    font-size: clamp(2rem, calc(2rem + ((1vw - 0.48rem) * 1.9444)), 3.4rem);
 }
 
 p {
@@ -83,26 +90,6 @@ label {
   -ms-animation: fadein 2s; /* Internet Explorer */
   -o-animation: fadein 2s; /* Opera < 12.1 */
   animation: fadein 2s;
-}
-
-.delay-1 {
-   animation-delay: 50ms;
-}
-
-.delay-2 {
-    animation-delay: 90ms;
-}
-
-.delay-3 {
-    animation-delay: 130ms;
-}
-
-.delay-4 {
-    animation-delay: 170ms;
-}
-
-.delay-5 {
-    animation-delay: 210ms;
 }
 
 .card:hover {
@@ -171,13 +158,18 @@ input[type="number" i]:focus {
   font-size: 1.8rem;
   font-weight: 700;
   margin-bottom: 4.5rem;
-  width: 50%;
+  width: 100%;
   border: 0.4rem solid black;
   border-radius: 0.4rem;
   transition: 0.3s ease transform, background;
   cursor: pointer;
   user-select: none;
 }
+
+button[type="submit"]:disabled {
+    opacity: .4;
+    transform: none !important;
+  }
 
 button[type="submit"] {
   margin-top: 4rem;
