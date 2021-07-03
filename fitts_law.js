@@ -29,15 +29,13 @@
 		runs = 0;
         //The clicking errors made by the user
 		click_errors = [0,0,0,0,0];
-        //mail goes to us
-		mailtext = "mailto:arbe0006@stud.hs-kl.de?subject=Ergebnisse&body=";
 		experimentActive = true;
         //The times array to store all of our times for each iteration
 		timesArr = [new Array(),new Array(),new Array(),new Array(),new Array()];
 
 		//Hide buttons and other elements
 		startStudyBtn.setAttribute("class","is--hidden button");
-		document.getElementById("send_mail").setAttribute("class","button is--hidden");
+
 		circle.setAttribute("class","");
 		document.getElementById("result").setAttribute("class","is--hidden");
 		descriptionWrapper.setAttribute("class","is--hidden");
@@ -58,16 +56,16 @@
 		size = ball.offsetWidth;
 
         // Runs - each run 10 clicks
-		if(runs <= 10) {
+		if(runs <= 1) {
 			size = 50;
 			setSize(50);
-		} else if (runs <= 20) {
+		} else if (runs <= 2) {
 			size = 30;
 			setSize(30);
-		} else if (runs <= 30) {
+		} else if (runs <= 3) {
 			size = 20;
 			setSize(20);
-		} else if (runs <= 40) {
+		} else if (runs <= 4) {
 			size = 10;
 			setSize(10);
 		} else {
@@ -88,7 +86,7 @@
 		positionCircle(x,y);
 	}
 
-	//Prueft den distance zwischen den Kreisen
+	//Distance between our circles
 	function checkDistance(oldX, oldY, oldsize, newX, newY, newsize) {
 		var minimal = oldsize + 30 + newsize;
 		var diffX = oldX - newX;
@@ -97,7 +95,7 @@
 		return (distance >= minimal);
 	}
 
-	//Positioniere Ball an Position
+	//Position our ball absolute
 	function positionCircle(posX, posY) {
 		var ball = circle;
 		ball.style.position = "absolute";
@@ -124,32 +122,32 @@
 			averageTime = Math.round(averageTime / (timesArr[size].length));
 
             //sets the different values for all of our sizes and
-            //inserts them into our "results" wrapper element
-			document.getElementById("size_"+size).innerHTML = "Größe: "+getsize(size)+"px<br/>click_errors: " + click_errors[size] + "<br/>Durchschnittszeit: " + averageTime;
+            // 1) inserts them into our "results" wrapper element which the user see
+			document.getElementById("size_"+size).innerHTML = "Größe: "+getsize(size)+"px<br/>Fehler: " + click_errors[size] + "<br/>Durchschnittszeit: " + averageTime;
+            // 2) inserts them in our input fields which only we - the authors - see
+			document.getElementById("input_"+size).value = "Größe: "+getsize(size)+"px<br/>click_errors: " + click_errors[size] + "<br/>Durchschnittszeit: " + averageTime;
 
-			mailtext = mailtext + "size%3A"+getsize(size)+"px%0A";
-			mailtext = mailtext + "click_errors%3A"+click_errors[size]+"%0A";
-			mailtext = mailtext + "Durchschnittszeit%3A"+averageTime+"ms%0A";
 		}
-		//Ausgabe der Ergebnisse
+
+        //removes the hidden-Class from our result wrapper and displays it
 		document.getElementById("result").setAttribute("class","");
+        //experiment is over
 		experimentActive = false;
 
-		//Darstellung der GUI-Elemente
-		document.getElementById("send_mail").setAttribute("class","button");
-		document.getElementById("sender").setAttribute("href",mailtext);
+		//Buttons
 		startStudyBtn.setAttribute("class","button");
 		startStudyBtn.innerHTML = "Restart study";
 		circle.setAttribute("class","hidden");
 }
 
+    //switch case statement for the different sizes: 5,10,20,30,50
 	function getsize(size) {
 		switch(size) {
-			case 0: return 5; break;
-			case 1: return 10; break;
-			case 2: return 20; break;
-			case 3: return 30; break;
-			case 4: return 50; break;
+			case 0: return 5;
+			case 1: return 10;
+			case 2: return 20;
+			case 3: return 30;
+			case 4: return 50;
 		}
 	}
 
@@ -159,24 +157,24 @@
 			var klickzeit = new Date().getTime();
 			var zeitdiff = klickzeit - startZeit;
 
-			if(runs <= 10) {
+			if(runs <= 1) {
 				click_errors[4] = click_errors[4] - 1;
 				timesArr[4].push(zeitdiff);
-			} else if(runs <= 20) {
+			} else if(runs <= 2) {
 				click_errors[3] = click_errors[3] - 1;
 				timesArr[3].push(zeitdiff);
-			} else if(runs <= 30) {
-				click_errors[2] = click_errors[2] - 1;
+			} else if(runs <= 3) {
+				click_errors[3] = click_errors[2] - 1;
 				timesArr[2].push(zeitdiff);
-			} else if(runs <= 40) {
-				click_errors[1] = click_errors[1] - 1;
+			} else if(runs <= 4) {
+				click_errors[2] = click_errors[1] - 1;
 				timesArr[1].push(zeitdiff);
 			} else {
-				click_errors[0] = click_errors[0] - 1;
+				click_errors[1] = click_errors[0] - 1;
 				timesArr[0].push(zeitdiff);
 			}
 
-			if(runs < 50){
+			if(runs < 5){
 				startStudy();
 			} else {
 				stopExperiment();
@@ -186,13 +184,13 @@
 
 	function clickHintergrund() {
         console.log("click");
-		if(runs <= 10) {
+		if(runs <= 1) {
 			click_errors[4] = click_errors[4] + 1;
-		} else if(runs <= 20) {
+		} else if(runs <= 2) {
 			click_errors[3] = click_errors[3] + 1;
-		} else if(runs <= 30) {
+		} else if(runs <= 3) {
 			click_errors[2] = click_errors[2] + 1;
-		} else if(runs <= 40) {
+		} else if(runs <= 4) {
 			click_errors[1] = click_errors[1] + 1;
 		} else {
 			click_errors[0] = click_errors[0] + 1;
