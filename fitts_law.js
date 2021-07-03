@@ -200,8 +200,15 @@
     function checkDisabled() {
         var gender = $('.placeholder');
         var age = $('input#age');
+		var playerType = $('.placeholder-player');
 
-        if (gender.text() === '' || gender.text() === 'gender' || age.val() === '') {
+		if (age.val().length > 0) {
+			$('label#age').css({'text-decoration':"line-through"});
+		} else {
+			$('label#age').css({'text-decoration':""});
+		}
+
+        if (gender.text() === '' || gender.text() === 'gender' || playerType.text() === '' || playerType.text() === 'type' || age.val() === '') {
             $("button[type=submit]").prop("disabled", true);
         } else  {
             $("button[type=submit]").prop("disabled", false)
@@ -214,6 +221,24 @@
             else return;
         });
     }
+
+	function displayGifPc() {
+		$('img#pc-gamer').removeClass('is--hidden');
+		$('img#console-gamer').addClass('is--hidden');
+	}
+
+	function undisplayGiftPc() {
+		$('img#pc-gamer').addClass('is--hidden');
+	}
+
+	function displayGifConsole() {
+		$('img#console-gamer').removeClass('is--hidden');
+		$('img#pc-gamer').addClass('is--hidden');
+	}
+
+	function undisplayGiftConsole() {
+		$('img#console-gamer').addClass('is--hidden');
+	}
 
 	circle.addEventListener("click", clickBall);
 	area.addEventListener("click", clickHintergrund);
