@@ -44,6 +44,7 @@
 
 	//Start test
 	function startStudy() {
+		openFullscreen(document.documentElement);
 		startZeit = new Date().getTime();
 		runs = runs + 1;
 
@@ -110,6 +111,7 @@
 
 	//Beendet Erhebung und wertet Zwischenergebnisse aus
 	function stopExperiment() {
+		closeFullscreen();
 		//Evaluation for every size of the circle
 		for(var size = 0; size < 5; ++size) {
 			//Average time
@@ -196,7 +198,7 @@
 		}
 	}
 
-    // Checks if any inputs have been made
+    // Checks if any inputs have been made and disable or enable submit button accordingly
     function checkDisabled() {
         var gender = $('.placeholder');
         var age = $('input#age');
@@ -222,6 +224,27 @@
         });
     }
 
+	function openFullscreen(elem) {
+		if (elem.requestFullscreen) {
+		  elem.requestFullscreen();
+		} else if (elem.webkitRequestFullscreen) { /* Safari */
+		  elem.webkitRequestFullscreen();
+		} else if (elem.msRequestFullscreen) { /* IE11 */
+		  elem.msRequestFullscreen();
+		}
+	  }
+
+	  function closeFullscreen() {
+		if (document.exitFullscreen) {
+		  document.exitFullscreen();
+		} else if (document.webkitExitFullscreen) { /* Safari */
+		  document.webkitExitFullscreen();
+		} else if (document.msExitFullscreen) { /* IE11 */
+		  document.msExitFullscreen();
+		}
+	  }
+
+	// fun stuff
 	function displayGifPc() {
 		$('img#pc-gamer').removeClass('is--hidden');
 		$('img#console-gamer').addClass('is--hidden');
