@@ -122,30 +122,32 @@
 			averageTime = Math.round(averageTime / (timesArr[size].length));
 
             //sets the different values for all of our sizes and
-            //inserts them into our "results" wrapper element
-			document.getElementById("size_"+size).innerHTML = "Größe: "+getsize(size)+"px<br/>click_errors: " + click_errors[size] + "<br/>Durchschnittszeit: " + averageTime;
+            // 1) inserts them into our "results" wrapper element which the user see
+			document.getElementById("size_"+size).innerHTML = "Größe: "+getsize(size)+"px<br/>Fehler: " + click_errors[size] + "<br/>Durchschnittszeit: " + averageTime;
+            // 2) inserts them in our input fields which only we - the authors - see
 			document.getElementById("input_"+size).value = "Größe: "+getsize(size)+"px<br/>click_errors: " + click_errors[size] + "<br/>Durchschnittszeit: " + averageTime;
 
 		}
-		//Ausgabe der Ergebnisse
+
+        //removes the hidden-Class from our result wrapper and displays it
 		document.getElementById("result").setAttribute("class","");
+        //experiment is over
 		experimentActive = false;
 
-		//Darstellung der GUI-Elemente
-		document.getElementById("send_mail").setAttribute("class","button");
-		document.getElementById("sender").setAttribute("href",mailtext);
+		//Buttons
 		startStudyBtn.setAttribute("class","button");
 		startStudyBtn.innerHTML = "Restart study";
 		circle.setAttribute("class","hidden");
 }
 
+    //switch case statement for the different sizes: 5,10,20,30,50
 	function getsize(size) {
 		switch(size) {
-			case 0: return 5; break;
-			case 1: return 10; break;
-			case 2: return 20; break;
-			case 3: return 30; break;
-			case 4: return 50; break;
+			case 0: return 5;
+			case 1: return 10;
+			case 2: return 20;
+			case 3: return 30;
+			case 4: return 50;
 		}
 	}
 

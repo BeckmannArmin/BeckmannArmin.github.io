@@ -1,5 +1,7 @@
 
-	:root {
+	@import url('https://fonts.googleapis.com/css?family=Playfair+Display&display=swap');
+
+    :root {
         --bg-main: #f2f2f2;
         --color-main: #404040;
         --ball-color: rgb(66, 73, 168);
@@ -14,7 +16,7 @@
     }
 
     body {
-        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-family: 'Playfair Display', serif;
         user-select: none;
         -webkit-user-select: none;
         -moz-user-select: none;
@@ -33,10 +35,55 @@
         line-height: 1.5;
       }
 
-      p {
+      p, label {
         font-size: clamp(1.6rem, calc(1.6rem + ((1vw - 0.48rem) * 1.6667)), 2rem);
         min-height: 0vw;
         line-height: 1.5;
+        font-weight: 700;
+      }
+
+      label {
+        margin-right: 4rem;
+      }
+
+      #result {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        flex-flow: column;
+      }
+
+     .results-wrapper {
+          flex-flow: row;
+          display: flex;
+          width: 100%;
+          margin-bottom: 6rem;
+      }
+
+      .card {
+        display: flex;
+        flex-flow: column;
+        max-width: 40rem;
+        height: 15rem;
+        overflow: hidden;
+        border-radius: .5em;
+        text-decoration: none;
+        background: white;
+        margin: 1em 1em 1em 0;
+        padding: 2.75em 2.5em;
+        box-shadow: 0 1.5em 2.5em -.5em rgba(#000000, .1);
+        transition: transform .45s ease, background .45s ease;
+      }
+
+      .card:hover {
+        background: #753BBD;
+        transform: scale(1.02);
+        color: white;
+      }
+
+      #gender {
+        margin-bottom: 4rem;
       }
 
       #area {
@@ -54,15 +101,9 @@
           margin-right: auto;
       }
 
-      #result {
-        max-width: 112rem;
-        min-width: 112rem;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
       .btn-wrapper {
         max-width: 112rem;
+        width: 100%;
       }
 
 	#circle {
@@ -85,6 +126,7 @@
 
 	.button {
     text-align: center;
+    font-family: inherit;
     background-color: #FFFFFF;
     padding: 1.6rem 2.4rem;
     font-size: 1.8rem;
@@ -98,6 +140,12 @@
     user-select: none;
   }
 
+  button[type=submit] {
+      margin-top: 4rem;
+      background-color: black;
+      color: white;
+  }
+
   .button:is(:hover, :focus) {
       background-color: black;
       color: white;
@@ -106,4 +154,78 @@
 
   .button:is(:hover, :focus) .sender {
     color: white !important;
+}
+
+
+/** Fancy selector */
+.typo, .list a {
+    font-size: 60px;
+    font-weight: 700;
+    font-family: 'Playfair Display', serif;
+    color: #404040;
+    text-decoration: none;
+}
+.typo option, .list a option {
+    font-size: 30px;
+}
+.transition {
+    transition: all 0.4s ease-in-out;
+}
+
+.wrapper {
+    margin-top: -4.5rem;
+    margin-bottom: 4rem;
+}
+.list {
+    display: inline-block;
+    position: relative;
+    margin-left: 6px;
+}
+.list ul {
+    text-align: left;
+    position: absolute;
+    padding: 0;
+    bottom: 0;
+    left: 0;
+    display: none;
+}
+.list ul .active {
+    display: block;
+}
+.list li {
+    list-style: none;
+}
+.list li:first-child a {
+    color: rgba(125, 64, 191, 1);
+}
+.list a {
+    transition: all 0.4s;
+    color: rgba(123, 0, 255, 1);
+    position: relative;
+}
+.list a:after {
+    position: absolute;
+    content: '';
+    height: 5px;
+    width: 0;
+    left: 0;
+    background: rgba(176, 102, 255, 1);
+    bottom: 0;
+    transition: all 0.4s ease-out;
+}
+.list a:hover {
+    cursor: pointer;
+    color: rgba(176, 102, 255, 1);
+}
+.list a:hover:after {
+    width: 100%;
+}
+
+.placeholder {
+    border-bottom: 4px solid;
+    cursor: pointer;
+    color: rgba(125, 64, 191, 1);
+}
+.placeholder:hover {
+    color: #404040;
 }
