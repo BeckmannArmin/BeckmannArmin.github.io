@@ -144,7 +144,7 @@
 		//Buttons
 		startStudyBtn.setAttribute("class","button");
 		startStudyBtn.innerHTML = "Experiment neustarten";
-		circle.setAttribute("class","hidden");
+		circle.setAttribute("class","is--hidden");
         checkDisabled();
 }
 
