@@ -41,6 +41,8 @@
 
 	//Start test
 	function startStudy() {
+        //Clear all inputs before proceeding
+        clearInputs();
         //Enter fullscreen mode to reduce distractions with same colored icons as the circle
 		openFullscreen(document.documentElement);
 		startZeit = new Date().getTime();
@@ -223,6 +225,20 @@
             }
             else return;
         });
+    }
+
+    //Clear all inputs after study completed
+    function clearInputs() {
+        var gender = $('.placeholder');
+        var age = $('input#age');
+		var playerType = $('.placeholder-player');
+
+        age.val('');
+        gender.text('gender');
+        playerType.text('type');
+
+        $('.strikethrough-player').css({'text-decoration':""});
+        $('.strikethrough').css({'text-decoration':""});
     }
 
     //Enter fullscreen mode - Browser support
