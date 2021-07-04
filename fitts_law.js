@@ -14,11 +14,6 @@
 	var runs = 0;
 
 	//Safe the clicking errors for each iteration of the different circle sizes
-	// 0 = 5px
-	// 1 = 10px
-	// 2 = 20px
-	// 3 = 30px
-	// 4 = 50px
 	var click_errors = [0,0,0,0,0];
 
 	//Start our study
@@ -46,6 +41,7 @@
 
 	//Start test
 	function startStudy() {
+        //Enter fullscreen mode to reduce distractions with same colored icons as the circle
 		openFullscreen(document.documentElement);
 		startZeit = new Date().getTime();
 		runs = runs + 1;
@@ -158,6 +154,8 @@
 	function clickBall() {
 		if(experimentActive) {
 			var klickzeit = new Date().getTime();
+            //Difference between the time the circle has been clicked and the time we started our expirement
+            // e.g. startStudy()
 			var zeitdiff = klickzeit - startZeit;
 
 			if(runs <= 1) {
@@ -185,6 +183,7 @@
 		}
 	}
 
+    //Detect clicks on our background and add them to the corresponding click_errors array
 	function clickHintergrund() {
         console.log("click");
 		if(runs <= 1) {
@@ -226,6 +225,7 @@
         });
     }
 
+    //Enter fullscreen mode - Browser support
 	function openFullscreen(elem) {
 		if (elem.requestFullscreen) {
 		  elem.requestFullscreen();
@@ -236,6 +236,7 @@
 		}
 	  }
 
+      //Leave fullscreen mode - Browser support
 	  function closeFullscreen() {
 		if (document.exitFullscreen) {
 		  document.exitFullscreen();
@@ -265,6 +266,7 @@
 		$('img#console-gamer').addClass('is--hidden');
 	}
 
+    //Add eventlistener to our objects
 	circle.addEventListener("click", clickBall);
 	area.addEventListener("click", clickHintergrund);
 	startStudyBtn.addEventListener("click", initStudy);
