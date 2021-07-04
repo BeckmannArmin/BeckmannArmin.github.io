@@ -30,7 +30,7 @@
 
       <!-- The results from the participant user -->
       <div id="result" class="is--hidden">
-        <h1>Results:</h1>
+        <h1>Deine Ergbenisse:</h1>
 
         <div class="results-wrapper">
           <p id="size_0" class="card"></p>
@@ -51,42 +51,42 @@
 
           <!-- Gender and age selection for study purposes -->
           <select name="gender" id="gender" required="" hidden>
-            <option value="Choose" selected="" disabled="">Choose gender</option>
-            <option value="Man">Man</option>
-            <option value="Woman">Woman</option>
-            <option value="Non-Binary">Non-Binary</option>
+            <option value="Choose" selected="" disabled="">Wähle Geschlecht</option>
+            <option value="Mann">Mann</option>
+            <option value="Frau">Frau</option>
+            <option value="Nicht-Binär">Nicht-Binär</option>
           </select>
           <br>
 
           <!-- Just a fancy selector -->
-            <div class="wrapper typo"><span class="strikethrough">Please select a</span>
-              <div class="list"><span class="placeholder">gender</span>
+            <div class="wrapper typo"><span class="strikethrough">Bitte wähle dein</span>
+              <div class="list"><span class="placeholder">Geschlecht</span>
                 <ul class="list__ul">
-                  <li><a href="">Man</a></li>
-                  <li><a href="">Woman</a></li>
-                  <li><a href="">Non-Binary</a></li>
+                  <li><a href="">Mann</a></li>
+                  <li><a href="">Frau</a></li>
+                  <li><a href="">Nicht-Binär</a></li>
                 </ul>
               </div>
             </div>
-            <label for="age" id="age">How old are you?</label>
+            <label for="age" id="age">Wie alt bist du?</label>
             <input onkeyup="checkDisabled()" name="age" id="age" type="number" required />
             <br>
 
               <!-- Player type selection for study purposes -->
           <select name="player" id="player" required="" hidden>
-            <option value="Choose" selected="" disabled="">Choose player type</option>
+            <option value="Choose" selected="" disabled="">Wähle Spieler Typ</option>
             <option value="PC">PC</option>
-            <option value="Console">Console</option>
-            <option value="None">None</option>
+            <option value="Konsole">Konsole</option>
+            <option value="Weder noch">Weder noch</option>
           </select>
           <br>
           <!-- Just a fancy selector for player type -->
-            <div class="wrapper typo"><span class="strikethrough-player">Please select your player</span>
-              <div class="list"><span class="placeholder-player">type</span>
+            <div class="wrapper typo"><span class="strikethrough-player">Bitte wählen deinen Spieler</span>
+              <div class="list"><span class="placeholder-player">Typ</span>
                 <ul class="list__ul-player">
                   <li><a onmouseover="displayGifPc()" onmouseout="undisplayGiftPc()" id="pc" href="">PC</a></li>
-                  <li><a onmouseover="displayGifConsole()" onmouseout="undisplayGiftConsole()" href="">Console</a></li>
-                  <li><a href="">None</a></li>
+                  <li><a onmouseover="displayGifConsole()" onmouseout="undisplayGiftConsole()" href="">Konsole</a></li>
+                  <li><a href="">Weder noch</a></li>
                   <img id="console-gamer" class="is--hidden giphy" src="gifs/non-gamer.gif" >
                 <img id="pc-gamer" class="is--hidden giphy" src="gifs/pc-player.gif" >
                 </ul>
@@ -94,7 +94,7 @@
             </div>
 
 
-          <button type="submit" class="button">Send results</button>
+          <button type="submit" class="button">Ergebnisse übermitteln</button>
         </form>
 
       </div>

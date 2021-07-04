@@ -139,7 +139,7 @@
 
 		//Buttons
 		startStudyBtn.setAttribute("class","button");
-		startStudyBtn.innerHTML = "Restart study";
+		startStudyBtn.innerHTML = "Experiment neustarten";
 		circle.setAttribute("class","hidden");
         checkDisabled();
 }
@@ -221,14 +221,14 @@
 			$('label#age').css({'text-decoration':""});
 		}
 
-        if (gender.text() === '' || gender.text() === 'gender' || playerType.text() === '' || playerType.text() === 'type' || age.val() === '') {
+        if (gender.text() === '' || gender.text() === 'Geschlecht' || playerType.text() === '' || playerType.text() === 'Typ' || age.val() === '') {
             $("button[type=submit]").prop("disabled", true);
         } else  {
             $("button[type=submit]").prop("disabled", false)
         };
 
         $("button[type=submit]:disabled").click(function () {
-            if (gender.text() === '' || gender.text() === 'gender') {
+            if (gender.text() === '' || gender.text() === 'Geschlecht') {
                 return false;
             }
             else return;
@@ -242,8 +242,8 @@
 		var playerType = $('.placeholder-player');
 
         age.val('');
-        gender.text('gender');
-        playerType.text('type');
+        gender.text('Geschlecht');
+        playerType.text('Typ');
 
         $('.strikethrough-player').css({'text-decoration':""});
         $('.strikethrough').css({'text-decoration':""});
