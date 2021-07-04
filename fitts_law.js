@@ -12,6 +12,7 @@
 
 	var timesArr = [new Array(),new Array(),new Array(),new Array(),new Array()];
 	var runs = 0;
+    var totalRuns = 0;
 
 	//Safe the clicking errors for each iteration of the different circle sizes
 	var click_errors = [0,0,0,0,0];
@@ -45,10 +46,11 @@
 		openFullscreen(document.documentElement);
 		startZeit = new Date().getTime();
 		runs = runs + 1;
+        totalRuns = totalRuns + 1;
 
 		var ball = circle;
 
-		//Setze Größe
+		//Layout witdh of the circle
 		var size = 0;
 		size = ball.offsetWidth;
 
@@ -82,7 +84,7 @@
 		}
 		while(checkDistance(ball.offsetLeft,ball.offsetTop,size,x,y,size) == false);
 
-		//Setze Position
+		//Position circle absolute
 		positionCircle(x,y);
 	}
 
@@ -110,7 +112,7 @@
 		ball.style.height = size+'px';
 	}
 
-	//Beendet Erhebung und wertet Zwischenergebnisse aus
+	//Stop experiment
 	function stopExperiment() {
 		closeFullscreen();
 		//Evaluation for every size of the circle
@@ -124,7 +126,7 @@
 
             //sets the different values for all of our sizes and
             // 1) inserts them into our "results" wrapper element which the user see
-			document.getElementById("size_"+size).innerHTML = "Größe: "+getsize(size)+"px<br/>Fehler: " + click_errors[size] + "<br/>Durchschnittszeit: " + averageTime;
+			document.getElementById("size_"+size).innerHTML = "Größe: "+getsize(size)+"px<br/>Fehler: " + click_errors[size] + "<br/>Durchschnittszeit: " + averageTime+" ms";
             // 2) inserts them in our input fields which only we - the authors - see
 			document.getElementById("input_"+size).value = "Größe: "+getsize(size)+"px<br/>click_errors: " + click_errors[size] + "<br/>Durchschnittszeit: " + averageTime;
 
@@ -165,6 +167,7 @@
             // e.g. startStudy()
 			var zeitdiff = klickzeit - startZeit;
 
+            //We have to substract 1 from our values because the click on the circle counts somehow
 			if(runs <= 1) {
 				click_errors[4] = click_errors[4] - 1;
 				timesArr[4].push(zeitdiff);
@@ -172,13 +175,13 @@
 				click_errors[3] = click_errors[3] - 1;
 				timesArr[3].push(zeitdiff);
 			} else if(runs <= 3) {
-				click_errors[3] = click_errors[2] - 1;
+				click_errors[2] = click_errors[2] - 1;
 				timesArr[2].push(zeitdiff);
 			} else if(runs <= 4) {
-				click_errors[2] = click_errors[1] - 1;
+				click_errors[1] = click_errors[1] - 1;
 				timesArr[1].push(zeitdiff);
 			} else {
-				click_errors[1] = click_errors[0] - 1;
+				click_errors[0] = click_errors[0] - 1;
 				timesArr[0].push(zeitdiff);
 			}
 
