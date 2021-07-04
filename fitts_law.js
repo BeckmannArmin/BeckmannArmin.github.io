@@ -16,10 +16,8 @@
 	//Safe the clicking errors for each iteration of the different circle sizes
 	var click_errors = [0,0,0,0,0];
 
-	//Start our study
+	//Initialize all objects
 	function initStudy() {
-        //Empty all arrays
-
 		//Init our study with 0 runs
 		runs = 0;
         //The clicking errors made by the user
@@ -35,11 +33,11 @@
 		document.getElementById("result").setAttribute("class","is--hidden");
 		descriptionWrapper.setAttribute("class","is--hidden");
 
-		//Start test
+		//Start our study
 		startStudy();
 	}
 
-	//Start test
+	//Start our study
 	function startStudy() {
         //Clear all inputs before proceeding
         clearInputs();
