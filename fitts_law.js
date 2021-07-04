@@ -1,5 +1,5 @@
 
-	//Variablen anlegen und initialisieren
+	//Define variabnles and initialize objects
 	var experimentActive = false;
 
     var circle = document.getElementById("circle");
@@ -19,6 +19,8 @@
 
 	//Initialize all objects
 	function initStudy() {
+         //Enter fullscreen mode to reduce distractions with same colored icons as the circle
+		openFullscreen(document.documentElement);
 		//Init our study with 0 runs
 		runs = 0;
         //The clicking errors made by the user
@@ -30,63 +32,65 @@
 		//Hide buttons and other elements
 		startStudyBtn.setAttribute("class","is--hidden button");
 
-		circle.setAttribute("class","");
 		document.getElementById("result").setAttribute("class","is--hidden");
 		descriptionWrapper.setAttribute("class","is--hidden");
 
-		//Start our study
-		startStudy();
+		/** Start our study after 6 seconds
+         * because the fullscreen overlay might block the appearance of our circle
+          */
+        setTimeout(() => {
+            circle.setAttribute("class","");
+            startStudy();
+        }, 6000);
 	}
 
 	//Start our study
 	function startStudy() {
-        //Clear all inputs before proceeding
-        clearInputs();
-        //Enter fullscreen mode to reduce distractions with same colored icons as the circle
-		openFullscreen(document.documentElement);
-		startZeit = new Date().getTime();
-		runs = runs + 1;
-        totalRuns = totalRuns + 1;
+    //Clear all inputs before proceeding
+    clearInputs();
+    startZeit = new Date().getTime();
+    runs = runs + 1;
 
-		var ball = circle;
+    var ball = circle;
 
-		//Layout witdh of the circle
-		var size = 0;
-		size = ball.offsetWidth;
+    //Layout witdh of the circle
+    var size = 0;
+    size = ball.offsetWidth;
 
-        // Runs - each run 10 clicks
-		if(runs <= 1) {
-			size = 50;
-			setSize(50);
-		} else if (runs <= 2) {
-			size = 30;
-			setSize(30);
-		} else if (runs <= 3) {
-			size = 20;
-			setSize(20);
-		} else if (runs <= 4) {
-			size = 10;
-			setSize(10);
-		} else {
-			size = 5;
-			setSize(5);
-		}
+    // Runs - each run 10 clicks
+    if (runs <= 1) {
+      size = 50;
+      setSize(50);
+    } else if (runs <= 2) {
+      size = 30;
+      setSize(30);
+    } else if (runs <= 3) {
+      size = 20;
+      setSize(20);
+    } else if (runs <= 4) {
+      size = 10;
+      setSize(10);
+    } else {
+      size = 5;
+      setSize(5);
+    }
 
-        /** Calculate a random position for our circle
-         *  between the left hand side to the left side of the vertical scrollbar
-         *  and the elements height
-         */
-		var x = 0;
-		var y = 0;
-		do{
-			x = Math.floor(Math.random()*(document.body.offsetWidth - size));
-			y = Math.floor(Math.random()*(document.body.offsetHeight - size));
-		}
-		while(checkDistance(ball.offsetLeft,ball.offsetTop,size,x,y,size) == false);
+    /** Calculate a random position for our circle
+     *  between the left hand side to the left side of the vertical scrollbar
+     *  and the elements height
+     */
+    var x = 0;
+    var y = 0;
+    do {
+      x = Math.floor(Math.random() * (document.body.offsetWidth - size));
+      y = Math.floor(Math.random() * (document.body.offsetHeight - size));
+    } while (
+      checkDistance(ball.offsetLeft, ball.offsetTop, size, x, y, size) == false
+    );
 
-		//Position circle absolute
-		positionCircle(x,y);
-	}
+    //Position circle absolute
+    positionCircle(x, y);
+  }
 
 	//Distance between our circles
 	function checkDistance(oldX, oldY, oldsize, newX, newY, newsize) {
@@ -293,4 +297,14 @@
     //Add eventlistener to our objects
 	circle.addEventListener("click", clickBall);
 	area.addEventListener("click", clickHintergrund);
-	startStudyBtn.addEventListener("click", initStudy);
+	startStudyBtn.addEventListener("click", function() {
+        if ((this).innerHTML === 'Experiment neustarten') {
+            if (confirm('Deine Ergebnisse wurden noch nicht an uns übermittelt. Bist du sicher, dass du dennoch das Experiment neustarten willst?')) {
+                initStudy();
+            } else {
+                //do nothing -stay
+            }
+        } else {
+            initStudy();
+        }
+    });
