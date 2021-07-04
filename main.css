@@ -80,8 +80,8 @@ label {
 
 .results-wrapper {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); 
-    grid-auto-rows: auto; 
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: auto;
     grid-gap: 1rem;
     width: 100%;
     margin-bottom: 6rem;
@@ -98,7 +98,7 @@ label {
   background: white;
   margin: 1em 1em 1em 0;
   padding: 2.75em 2.5em;
-  box-shadow: 0 1.5em 2.5em -0.5em rgba(#000000, 0.1);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.11);
   transition: 0.45s ease transform , background;
   -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
   -moz-animation: fadein 2s; /* Firefox < 16 */
