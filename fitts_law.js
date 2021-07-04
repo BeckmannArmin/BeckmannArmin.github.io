@@ -70,7 +70,10 @@
 			setSize(5);
 		}
 
-		//Wähle Position
+        /** Calculate a random position for our circle
+         *  between the left hand side to the left side of the vertical scrollbar
+         *  and the elements height
+         */
 		var x = 0;
 		var y = 0;
 		do{
@@ -150,7 +153,11 @@
 		}
 	}
 
-	//ermittle Zeit und starte newen Test
+	/** Calculates the difference from tht time
+     * when the circle appeares and the user clicked it
+     * and stores them into our timesArr arrays
+     * and click_errors arrays
+     */
 	function clickBall() {
 		if(experimentActive) {
 			var klickzeit = new Date().getTime();
