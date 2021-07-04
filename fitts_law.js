@@ -23,6 +23,8 @@
 
 	//Start our study
 	function initStudy() {
+        //Empty all arrays
+
 		//Init our study with 0 runs
 		runs = 0;
         //The clicking errors made by the user

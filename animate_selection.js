@@ -35,7 +35,7 @@ $('.placeholder-player').on('click', function (ev) {
  $('.list__ul-player a').on('click', function (ev) {
    ev.preventDefault();
    var index = $(this).parent().index();
-   var value = $('.list__ul').find('li a').eq(index).html();
+   var value = $('.list__ul-player').find('li a').eq(index).html();
 
    $('.placeholder-player').text( $(this).text() ).css('opacity', '1');
 
