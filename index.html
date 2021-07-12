@@ -1,83 +1,114 @@
 <!DOCTYPE html>
 <!-- Armin Beckmann (872310), Lucas Schopp (874792)-->
 <html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!--PERSONAL SCRIPT JavaScript-->
-    <script type="text/javascript">
-      $(document).ready(function () {
-        console.log("jQuery works");
-      });
-    </script>
 
-    <link rel="stylesheet" type="text/css" href="/main.css" />
-  </head>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      console.log('%cArmin Beckmann (872310) & Lucas Schopp (874792)', 'color: darkseagreen; background:darkslateblue;font-size:30px;');
+    });
+  </script>
 
-  <body>
-    <div id="area">
-		<div id="circle" class="is--hidden">
-		</div>
-		<div class="center">
-			<div id="description-wrapper">
-				<h1>Studie zu Fitt´s Law im Rahmen der Master Vorlesung <span class="is--italic">Methoden der empririshen Forschung</span></h1>
-				<p> Es erscheint zufällig ein grüner Kreis, der möglichst schnell von den Proband:innen angeklickt werden soll.
-                    Anschließend erscheint ein neuer Kreis. Die Kreise haben verschiedene Größen. <br> Der Test wird 3-mal
-                    wiederholt.</p>
-			</div>
+  <link rel="stylesheet" type="text/css" href="/main.css" />
+</head>
 
-            <!-- The results from the participant user -->
-			<div id="result" class="is--hidden">
-				<h1>Results:</h1>
+<body>
+  <div id="circle-counter">
+  </div>
 
-                <div class="results-wrapper">
-                    <p id="size_0" class="card"></p>
-                    <p id="size_1" class="card"></p>
-                    <p id="size_2" class="card"></p>
-                    <p id="size_3" class="card"></p>
-                    <p id="size_4" class="card"></p>
-                </div>
+  <canvas id="canvas"></canvas>
 
-				<form action="https://formspree.io/f/xleallnb" method="POST">
+  <div id="area">
+    <div id="circle" class="is--hidden"></div>
+    <div class="center">
+      <div id="description-wrapper">
+        <h1>Studie im Rahmen der Master Vorlesung <span class="is--italic">Methoden der empririshen
+            Forschung</span></h1>
+        <h2>Prüfer: Prof. Dr. Dieter Wallach &amp; Prof. Dr. Manfred Brill</h2>
+        <p> Es erscheint zufällig ein blauer Kreis, der möglichst schnell von den Proband:innen angeklickt werden soll.
+          Anschließend erscheint ein neuer Kreis. Die Kreise haben verschiedene Größen. <br> Benötigte periphere Geräte: Tastatur & Maus<br></p>
+      </div>
 
-                <!-- Hidden input fields which are submitted by the user -->
-				<input name="input0" id="input_0" hidden></input>
-				<input name="input1" id="input_1" hidden></input>
-				<input name="input2" id="input_2" hidden></input>
-				<input name="input3" id="input_3" hidden></input>
-				<input name="input4" id="input_4" hidden></input>
+      <!-- The results from the participant user -->
+      <div id="result" class="is--hidden">
+        <h1>Deine Ergbenisse:</h1>
 
-                <!-- Gender and age selection for study purposes -->
-                    <select name="gender" id="gender" required="true" hidden>
-                        <option value="Choose" selected="" disabled="">Choose gender</option>
-                        <option value="Man">Man</option>
-                        <option value="Woman">Woman</option>
-                        <option value="Non-Binary">Non-Binary</option>
-                    </select>
-                <br>
+        <div class="results-wrapper">
+          <p id="size_0" class="card"></p>
+          <p id="size_1" class="card"></p>
+          <p id="size_2" class="card"></p>
+          <p id="size_3" class="card"></p>
+          <p id="size_4" class="card"></p>
+        </div>
+        <form action="https://formspree.io/f/myyldzne" method="POST">
 
-                  <!-- Just a fancy selector -->
-                  <div class="wrapper typo"><span class="strikethrough">Please select a</span>
-                    <div class="list"><span class="placeholder">gender</span>
-                        <ul class="list__ul">
-                            <li><a href="">Man</a></li>
-                            <li><a href="">Woman</a></li>
-                            <li><a href="">Non-Binary</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <label for="age">How old are you?</label>
-                <input name="age" id="age" type="number" required />
-                <br>
-				<button type="submit" class="button">Send results</button>
-				</form>
+          <!-- Hidden input fields which are submitted by the user -->
+          <input name="input0" id="input_0" hidden></input>
+          <input name="input1" id="input_1" hidden></input>
+          <input name="input2" id="input_2" hidden></input>
+          <input name="input3" id="input_3" hidden></input>
+          <input name="input4" id="input_4" hidden></input>
 
-			</div>
+          <!-- Gender and age selection for study purposes -->
+          <select name="gender" id="gender" required="" hidden>
+            <option value="Choose" selected="" disabled="">Wähle Geschlecht</option>
+            <option value="Mann">Mann</option>
+            <option value="Frau">Frau</option>
+            <option value="Nicht-Binär">Nicht-Binär</option>
+          </select>
+          <br>
 
-			<div class="button" id="startStudy">Experiment starten</div>
-		</div>
-</div>
+          <!-- Just a fancy selector -->
+            <div class="wrapper typo"><span class="strikethrough">Bitte wähle dein</span>
+              <div class="list"><span class="placeholder">Geschlecht</span>
+                <ul class="list__ul">
+                  <li><a href="">Mann</a></li>
+                  <li><a href="">Frau</a></li>
+                  <li><a href="">Nicht-Binär</a></li>
+                </ul>
+              </div>
+            </div>
+            <label for="age" id="age">Wie alt bist du?</label>
+            <input onkeyup="checkDisabled()" name="age" id="age" type="number" required />
+            <br>
 
-    <script src="/fitts_law.js"></script>
-    <script src="/animate_selection.js"></script>
-  </body>
+              <!-- Player type selection for study purposes -->
+          <select name="player" id="player" required="" hidden>
+            <option value="Choose" selected="" disabled="">Wähle Spieler Typ</option>
+            <option value="PC">PC</option>
+            <option value="Konsole">Konsole</option>
+            <option value="Weder noch">Weder noch</option>
+          </select>
+          <br>
+          <!-- Just a fancy selector for player type -->
+            <div class="wrapper typo"><span class="strikethrough-player">Bitte wählen deinen Spieler</span>
+              <div class="list"><span class="placeholder-player">Typ</span>
+                <ul class="list__ul-player">
+                  <li><a onmouseover="displayGifPc()" onmouseout="undisplayGiftPc()" id="pc" href="">PC</a></li>
+                  <li><a onmouseover="displayGifConsole()" onmouseout="undisplayGiftConsole()" href="">Konsole</a></li>
+                  <li><a href="">Weder noch</a></li>
+                  <img id="console-gamer" class="is--hidden giphy" src="gifs/non-gamer.gif" >
+                <img id="pc-gamer" class="is--hidden giphy" src="gifs/pc-player.gif" >
+                </ul>
+              </div>
+            </div>
+
+
+          <button type="submit" class="button">Ergebnisse übermitteln</button>
+        </form>
+
+      </div>
+
+      <div class="button" id="startStudy">Experiment starten</div>
+    </div>
+  </div>
+
+  <script src="/counter.js"></script>
+  <script src="/fitts_law.js"></script>
+  <script src="/animate_selection.js"></script>
+</body>
+
 </html>

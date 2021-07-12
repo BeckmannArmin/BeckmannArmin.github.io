@@ -46,8 +46,13 @@
 
 	//Start test
 	function startStudy() {
-		startZeit = new Date().getTime();
-		runs = runs + 1;
+    //Clear all inputs before proceeding
+	drawCanvas();
+    clearInputs();
+    startZeit = new Date().getTime();
+    runs = runs + 1;
+
+    var ball = circle;
 
 		var ball = circle;
 
@@ -199,4 +204,54 @@
 
 	circle.addEventListener("click", clickBall);
 	area.addEventListener("click", clickHintergrund);
-	startStudyBtn.addEventListener("click", initStudy);
+	startStudyBtn.addEventListener("click", function() {
+        if ((this).innerHTML === 'Experiment neustarten') {
+            if (confirm('Deine Ergebnisse wurden noch nicht an uns übermittelt. Bist du sicher, dass du dennoch das Experiment neustarten willst?')) {
+                initStudy();
+            } else {
+                //do nothing -stay
+            }
+        } else {
+            initStudy();
+        }
+    });
+
+
+
+	function drawCanvas() {
+		var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+var BB = canvas.getBoundingClientRect();
+
+resizeCanvas();
+        
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+
+var offsetX = BB.left;
+var offsetY = BB.top;
+
+var lastX, lastY;
+var isDown = false;
+
+canvas.onmousemove = handleMousemove;
+
+
+function handleMousemove(e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    var mouseX = e.clientX - offsetX;
+    var mouseY = e.clientY - offsetY;
+
+    ctx.beginPath();
+    ctx.moveTo(lastX, lastY);
+    ctx.lineTo(mouseX, mouseY);
+    ctx.stroke();
+
+    lastX = mouseX;
+    lastY = mouseY;
+}
+	}
