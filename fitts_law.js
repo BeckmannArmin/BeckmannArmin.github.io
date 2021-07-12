@@ -6,6 +6,7 @@
     var area = document.getElementById("area");
     var descriptionWrapper = document.getElementById("description-wrapper");
     var startStudyBtn = document.getElementById("startStudy");
+	var canvas = document.getElementById("canvas");
 
 	var timer = 0;
 	var startZeit;
@@ -137,7 +138,9 @@
 			document.getElementById("size_"+size).innerHTML = "Größe: "+getsize(size)+"px<br/>Fehler: " + click_errors[size] + "<br/>Durchschnittszeit: " + averageTime+" ms";
             // 2) inserts them in our input fields which only we - the authors - see
 			document.getElementById("input_"+size).value = "Größe: "+getsize(size)+"px<br/>click_errors: " + click_errors[size] + "<br/>Durchschnittszeit: " + averageTime;
-
+			// 3) convert canvas to img and 
+			var dataURL = canvas.toDataURL('image/png');
+			document.getElementById('inp_img').value = dataURL;
 		}
 
         //removes the hidden-Class from our result wrapper and displays it
