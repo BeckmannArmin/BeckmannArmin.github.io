@@ -38,6 +38,7 @@
 		/** Start our study after 6 seconds
          * because the fullscreen overlay might block the appearance of our circle
           */
+		startTimer();
         setTimeout(() => {
             circle.setAttribute("class","");
             startStudy();
