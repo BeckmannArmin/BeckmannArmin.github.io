@@ -71,6 +71,7 @@ label {
 
 canvas {
     position: absolute;
+    opacity: 1;
 }
 
 #trial {

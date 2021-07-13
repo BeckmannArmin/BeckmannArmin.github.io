@@ -5,7 +5,28 @@ var circle = document.getElementById("circle");
 var area = document.getElementById("area");
 var descriptionWrapper = document.getElementById("description-wrapper");
 var startStudyBtn = document.getElementById("startStudy");
+
 var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+var BB = canvas.getBoundingClientRect();
+
+const CURRENT_DIFFICULTY = {
+    easy: {
+       color: "black"
+    },
+    middle: {
+        color: "blue"
+    },
+    medium: {
+        color: "orange"
+    },
+    hard: {
+        color: "red"
+    },
+    extreme: {
+        color: "purple"
+    }
+};
 
 var timer = 0;
 var startZeit;
@@ -202,22 +223,31 @@ function clickBall() {
     // The trial to make the user stay motivated during the experiment
     trial = trial + 1;
     $("#trial-label").text("Versuch " + trial + " von 50");
+    //We grab the position of our circle and pass it into our helper function
+    var position = $("#circle");
+    drawDotOnCanvas(position);
     //We have to substract 1 from our values because the click on the circle counts somehow
+    //We change the color of the strokes for each difficulty
     if (runs <= 10) {
       click_errors[4] = click_errors[4] - 1;
       timesArr[4].push(zeitdiff);
+      ctx.strokeStyle = CURRENT_DIFFICULTY.easy.color;
     } else if (runs <= 20) {
       click_errors[3] = click_errors[3] - 1;
       timesArr[3].push(zeitdiff);
+      ctx.strokeStyle = CURRENT_DIFFICULTY.middle.color;
     } else if (runs <= 30) {
       click_errors[2] = click_errors[2] - 1;
       timesArr[2].push(zeitdiff);
+      ctx.strokeStyle = CURRENT_DIFFICULTY.medium.color;
     } else if (runs <= 40) {
       click_errors[1] = click_errors[1] - 1;
       timesArr[1].push(zeitdiff);
+      ctx.strokeStyle = CURRENT_DIFFICULTY.hard.color;
     } else {
       click_errors[0] = click_errors[0] - 1;
       timesArr[0].push(zeitdiff);
+      ctx.strokeStyle = CURRENT_DIFFICULTY.extreme.color;
     }
 
     if (runs < 50) {
@@ -352,11 +382,32 @@ startStudyBtn.addEventListener("click", function () {
   }
 });
 
+
+//Canvas helper functions
+function drawDotOnCanvas(pos) {
+    var offset = pos.offset();
+    var width = pos.width();
+    var height = pos.height();
+
+    var centerX = offset.left + width / 2;
+    var centerY = offset.top + height / 2;
+
+    ctx.fillStyle = "green";
+    ctx.beginPath();
+    ctx.arc(centerX, centerY, 10, 0, 2*Math.PI);
+    ctx.fill();
+}
+
+
+function getMousePos(canvas, evt) {
+    return {
+      x: evt.clientX - BB.left,
+      y: evt.clientY - BB.top
+    };
+}
+
 //Method to track the paths between circle clicks
 function drawCanvas() {
-  var canvas = document.getElementById("canvas");
-  var ctx = canvas.getContext("2d");
-  var BB = canvas.getBoundingClientRect();
 
   resizeCanvas();
 
@@ -372,6 +423,21 @@ function drawCanvas() {
   var isDown = false;
 
   canvas.onmousemove = handleMousemove;
+  canvas.onmousedown = handleMouseDown;
+
+  function handleMouseDown(e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    var pos = getMousePos(canvas, e);
+    var posx = pos.x;
+    var posy = pos.y;
+    //Error colors
+    ctx.fillStyle = "red";
+    ctx.beginPath();
+    ctx.arc(posx, posy, 10, 0, 2*Math.PI);
+    ctx.fill();
+  }
 
   function handleMousemove(e) {
     e.preventDefault();
