@@ -54,9 +54,6 @@ function onTimesUp() {
   hideCounter();
 }
 
-function resetCounter() {
-    clearInterval(timerInterval);
-}
 
 function hideCounter() {
     document.getElementById("base-timer-circle").classList.add("is--hidden");

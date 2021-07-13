@@ -253,19 +253,11 @@ function clickBall() {
     if (runs < 50) {
       startStudy();
     } else {
-      doAnotherRound();
-      totalRuns = totalRuns + 1;
+      stopExperiment();
     }
   }
 }
 
-function doAnotherRound() {
-    resetCounter();
-    setTimeout(() => {
-        startTimer();
-    }, 50);
-    //stopExperiment();
-}
 
 //Detect clicks on our background and add them to the corresponding click_errors array
 function clickHintergrund() {
