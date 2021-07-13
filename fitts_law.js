@@ -146,6 +146,51 @@ function setSize(size) {
   ball.style.height = size + "px";
 }
 
+
+function stopExperiment_2() {
+    //closeFullscreen();
+    //Evaluation for every size of the circle
+    for (var size = 0; size < 5; ++size) {
+      //Average time
+      var averageTime = 0.0;
+      for (var i = 0; i < timesArr[size].length; ++i) {
+        averageTime += timesArr[size][i];
+      }
+      averageTime = Math.round(averageTime / timesArr[size].length);
+
+      // 2) inserts them in our input fields which only we - the authors - see
+      document.getElementById("input__" + size).value =
+        "Größe: " +
+        getsize(size) +
+        "px<br/>click_errors: " +
+        click_errors[size] +
+        "<br/>Durchschnittszeit: " +
+        averageTime;
+    }
+  }
+
+  function stopExperiment_3() {
+    //closeFullscreen();
+    //Evaluation for every size of the circle
+    for (var size = 0; size < 5; ++size) {
+      //Average time
+      var averageTime = 0.0;
+      for (var i = 0; i < timesArr[size].length; ++i) {
+        averageTime += timesArr[size][i];
+      }
+      averageTime = Math.round(averageTime / timesArr[size].length);
+
+      // 2) inserts them in our input fields which only we - the authors - see
+      document.getElementById("input___" + size).value =
+        "Größe: " +
+        getsize(size) +
+        "px<br/>click_errors: " +
+        click_errors[size] +
+        "<br/>Durchschnittszeit: " +
+        averageTime;
+    }
+  }
+
 //Stop experiment
 function stopExperiment() {
   closeFullscreen();
@@ -253,9 +298,23 @@ function clickBall() {
     if (runs < 50) {
       startStudy();
     } else {
-      stopExperiment();
+      //stopExperiment();
+      totalRuns = totalRuns + 1;
+      doAnotherRun();
     }
   }
+}
+
+function doAnotherRun() {
+    if (totalRuns === 1) {
+        runs = 0;
+        stopExperiment_2();
+    } else if(totalRuns === 2) {
+        runs = 0;
+        stopExperiment_3();
+    } else if (totalRuns === 3){
+        stopExperiment();
+    }
 }
 
 
