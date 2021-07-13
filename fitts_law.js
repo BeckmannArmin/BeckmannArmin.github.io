@@ -146,6 +146,56 @@ function setSize(size) {
   ball.style.height = size + "px";
 }
 
+
+function stopExperiment_2() {
+    //closeFullscreen();
+    //Evaluation for every size of the circle
+    for (var size = 0; size < 5; ++size) {
+        console.log(click_errors[size]);
+      //Average time
+      var averageTime = 0.0;
+      for (var i = 0; i < timesArr[size].length; ++i) {
+        averageTime += timesArr[size][i];
+      }
+      averageTime = Math.round(averageTime / timesArr[size].length);
+
+      // 2) inserts them in our input fields which only we - the authors - see
+      document.getElementById("input__" + size).value =
+        "Größe: " +
+        getsize(size) +
+        "px<br/>click_errors: " +
+        click_errors[size] +
+        "<br/>Durchschnittszeit: " +
+        averageTime;
+    }
+     // 3) convert canvas to img and
+     var dataURL = canvas.toDataURL("image/png");
+     document.getElementById("inp_img").value = dataURL;
+  }
+
+  function stopExperiment_3() {
+    //closeFullscreen();
+    //Evaluation for every size of the circle
+    for (var size = 0; size < 5; ++size) {
+        console.log(click_errors[size]);
+      //Average time
+      var averageTime = 0.0;
+      for (var i = 0; i < timesArr[size].length; ++i) {
+        averageTime += timesArr[size][i];
+      }
+      averageTime = Math.round(averageTime / timesArr[size].length);
+
+      // 2) inserts them in our input fields which only we - the authors - see
+      document.getElementById("input___" + size).value =
+        "Größe: " +
+        getsize(size) +
+        "px<br/>click_errors: " +
+        click_errors[size] +
+        "<br/>Durchschnittszeit: " +
+        averageTime;
+    }
+  }
+
 //Stop experiment
 function stopExperiment() {
   closeFullscreen();
@@ -176,9 +226,6 @@ function stopExperiment() {
       click_errors[size] +
       "<br/>Durchschnittszeit: " +
       averageTime;
-    // 3) convert canvas to img and
-    var dataURL = canvas.toDataURL("image/png");
-    document.getElementById("inp_img").value = dataURL;
   }
 
   //removes the hidden-Class from our result wrapper and displays it
@@ -222,30 +269,26 @@ function clickBall() {
     var zeitdiff = klickzeit - startZeit;
     // The trial to make the user stay motivated during the experiment
     trial = trial + 1;
-    $("#trial-label").text("Versuch " + trial + " von 50");
+    $("#trial-label").text("Kreis " + trial + " von 150");
     //We grab the position of our circle and pass it into our helper function
     var position = $("#circle");
     drawDotOnCanvas(position);
     //We have to substract 1 from our values because the click on the circle counts somehow
     //We change the color of the strokes for each difficulty
     if (runs <= 10) {
-      click_errors[4] = click_errors[4] - 1;
+      //click_errors[4] = click_errors[4];
       timesArr[4].push(zeitdiff);
       ctx.strokeStyle = CURRENT_DIFFICULTY.easy.color;
     } else if (runs <= 20) {
-      click_errors[3] = click_errors[3] - 1;
       timesArr[3].push(zeitdiff);
       ctx.strokeStyle = CURRENT_DIFFICULTY.middle.color;
     } else if (runs <= 30) {
-      click_errors[2] = click_errors[2] - 1;
       timesArr[2].push(zeitdiff);
       ctx.strokeStyle = CURRENT_DIFFICULTY.medium.color;
     } else if (runs <= 40) {
-      click_errors[1] = click_errors[1] - 1;
       timesArr[1].push(zeitdiff);
       ctx.strokeStyle = CURRENT_DIFFICULTY.hard.color;
     } else {
-      click_errors[0] = click_errors[0] - 1;
       timesArr[0].push(zeitdiff);
       ctx.strokeStyle = CURRENT_DIFFICULTY.extreme.color;
     }
@@ -253,13 +296,41 @@ function clickBall() {
     if (runs < 50) {
       startStudy();
     } else {
-      stopExperiment();
+      //stopExperiment();
+      totalRuns = totalRuns + 1;
+      circle.setAttribute("class", "is--hidden");
+     doAnotherRun();
     }
   }
 }
 
+function doAnotherRun() {
+    if (totalRuns === 1) {
+        runs = 0;
+        setTimeout(() => {
+            circle.setAttribute("class", "");
+            startStudy();
+        }, 6000);
+        resetTimer();
+        stopExperiment_2();
+    } else if(totalRuns === 2) {
+        runs = 0;
+        setTimeout(() => {
+            circle.setAttribute("class", "");
+            startStudy();
+        }, 6000);
+        resetTimer();
+        stopExperiment_3();
+
+    } else if (totalRuns === 3){
+        stopExperiment();
+    }
+}
+
+
 //Detect clicks on our background and add them to the corresponding click_errors array
 function clickHintergrund() {
+    console.log("click");
   if (runs <= 10) {
     click_errors[4] = click_errors[4] + 1;
   } else if (runs <= 20) {
@@ -365,7 +436,7 @@ function undisplayGiftConsole() {
 
 //Add eventlistener to our objects
 circle.addEventListener("click", clickBall);
-area.addEventListener("click", clickHintergrund);
+canvas.addEventListener("click", clickHintergrund);
 startStudyBtn.addEventListener("click", function () {
   if (this.innerHTML === "Experiment neustarten") {
     if (
