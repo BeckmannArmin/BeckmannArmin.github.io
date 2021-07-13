@@ -222,7 +222,7 @@ function clickBall() {
     var zeitdiff = klickzeit - startZeit;
     // The trial to make the user stay motivated during the experiment
     trial = trial + 1;
-    $("#trial-label").text("Versuch " + trial + " von 50");
+    $("#trial-label").text("Kreis " + trial + " von 50");
     //We grab the position of our circle and pass it into our helper function
     var position = $("#circle");
     drawDotOnCanvas(position);
