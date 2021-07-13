@@ -54,6 +54,13 @@ function onTimesUp() {
   hideCounter();
 }
 
+function resetTimer() {
+    clearInterval(timerInterval);
+    timeLeft = 6;
+    startTimer();
+}
+
+
 function hideCounter() {
     document.getElementById("base-timer-circle").classList.add("is--hidden");
 }
@@ -74,6 +81,8 @@ function startTimer() {
     setRemainingPathColor(timeLeft);
 
     if (timeLeft === 0) {
+      timePassed = 0;
+      //timeLeft = TIME_LIMIT;
       onTimesUp();
     }
   }, 1000);
