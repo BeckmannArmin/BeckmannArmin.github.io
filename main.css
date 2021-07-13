@@ -69,6 +69,17 @@ label {
     max-width: 112rem;
 }
 
+canvas {
+    position: absolute;
+    opacity: 0;
+}
+
+#trial {
+    position: absolute;
+    top: 5%;
+    font-size: 2rem;
+}
+
 #result {
   width: 100%;
   position: relative;

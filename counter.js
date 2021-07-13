@@ -2,8 +2,8 @@
 // https://css-tricks.com/how-to-create-an-animated-countdown-timer-with-html-css-and-javascript/
 
 const FULL_DASH_ARRAY = 283;
-const WARNING_THRESHOLD = 10;
-const ALERT_THRESHOLD = 5;
+const WARNING_THRESHOLD = 4;
+const ALERT_THRESHOLD = 2;
 
 const COLOR_CODES = {
   info: {

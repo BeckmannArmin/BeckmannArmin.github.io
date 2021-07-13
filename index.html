@@ -12,6 +12,19 @@
     });
   </script>
 
+<script type="text/javascript">
+    window.onload=function(){
+    var mobile = (/iphone|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
+    if (mobile) {
+        document.getElementById("area").innerHTML = `
+            <div style="text-align: center;"><h1>Der Test wurde nicht für Smartphones entwickelt.<br> Öffne den Link bitte auf deinem Rechner/Laptop/Tablet.</h1></div>
+        `;
+    } else {
+
+    }
+  }
+  </script>
+
   <link rel="stylesheet" type="text/css" href="/main.css" />
 </head>
 
@@ -19,15 +32,22 @@
   <div id="circle-counter">
   </div>
 
+  <canvas id="canvas"></canvas>
+
   <div id="area">
     <div id="circle" class="is--hidden"></div>
+
+    <div id="trial" class=""><span id="trial-label"></span></div>
+
     <div class="center">
       <div id="description-wrapper">
         <h1>Studie im Rahmen der Master Vorlesung <span class="is--italic">Methoden der empririshen
             Forschung</span></h1>
         <h2>Prüfer: Prof. Dr. Dieter Wallach &amp; Prof. Dr. Manfred Brill</h2>
-        <p> Es erscheint zufällig ein blauer Kreis, der möglichst schnell von den Proband:innen angeklickt werden soll.
-          Anschließend erscheint ein neuer Kreis. Die Kreise haben verschiedene Größen. <br> Benötigte periphere Geräte: Tastatur & Maus<br></p>
+        <p>Der Test beginnt sobald der Button angeklickt wurde.</p>
+        <p> Es erscheint zufällig ein blauer Kreis, der möglichst schnell und präzise von den Proband:innen angeklickt werden soll.
+          Anschließend erscheint ein neuer Kreis. Die Kreise erscheinen auf dem Bildschirm in verschiedenen Größen. <br> Der Test besteht aus drei Durchläufen, die hintereinander geschaltet werden.<br><br> Benötigte periphere Geräte: Tastatur & Maus.<br></p>
+          <p>Am Ende des Tests werden das Geschlecht sowie das Alter zum Zwecke der Auswertung abgefragt. Die Übermittlung erfolgt anonym.</p>
       </div>
 
       <!-- The results from the participant user -->
@@ -49,6 +69,8 @@
           <input name="input2" id="input_2" hidden></input>
           <input name="input3" id="input_3" hidden></input>
           <input name="input4" id="input_4" hidden></input>
+
+          <input id="inp_img" name="img" type="hidden" value="">
 
           <!-- Gender and age selection for study purposes -->
           <select name="gender" id="gender" required="" hidden>
