@@ -12,6 +12,19 @@
     });
   </script>
 
+<script language="Javascript">
+    window.onload=function(){
+    var mobile = (/iphone|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
+    if (mobile) {
+        document.getElementById("area").innerHTML = `
+            <div style="text-align: center;"><h1>Der Test wurde nicht für Smartphones entwickelt.<br> Öffne den Link bitte auf deinem Rechner/Laptop/Tablet.</h1></div>
+        `;
+    } else {
+
+    }
+  }
+  </script>
+
   <link rel="stylesheet" type="text/css" href="/main.css" />
 </head>
 
