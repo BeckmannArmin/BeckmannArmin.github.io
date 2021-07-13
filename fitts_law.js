@@ -167,6 +167,9 @@ function stopExperiment_2() {
         "<br/>Durchschnittszeit: " +
         averageTime;
     }
+     // 3) convert canvas to img and
+     var dataURL = canvas.toDataURL("image/png");
+     document.getElementById("inp_img").value = dataURL;
   }
 
   function stopExperiment_3() {
@@ -221,9 +224,6 @@ function stopExperiment() {
       click_errors[size] +
       "<br/>Durchschnittszeit: " +
       averageTime;
-    // 3) convert canvas to img and
-    var dataURL = canvas.toDataURL("image/png");
-    document.getElementById("inp_img").value = dataURL;
   }
 
   //removes the hidden-Class from our result wrapper and displays it
