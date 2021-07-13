@@ -88,16 +88,16 @@ function startStudy() {
   size = ball.offsetWidth;
 
   // Runs - each run 10 clicks
-  if (runs <= 10) {
+  if (runs <= 1) {
     size = 50;
     setSize(50);
-  } else if (runs <= 20) {
+  } else if (runs <= 2) {
     size = 30;
     setSize(30);
-  } else if (runs <= 30) {
+  } else if (runs <= 3) {
     size = 20;
     setSize(20);
-  } else if (runs <= 40) {
+  } else if (runs <= 4) {
     size = 10;
     setSize(10);
   } else {
@@ -273,19 +273,19 @@ function clickBall() {
     drawDotOnCanvas(position);
     //We have to substract 1 from our values because the click on the circle counts somehow
     //We change the color of the strokes for each difficulty
-    if (runs <= 10) {
+    if (runs <= 1) {
       click_errors[4] = click_errors[4] - 1;
       timesArr[4].push(zeitdiff);
       ctx.strokeStyle = CURRENT_DIFFICULTY.easy.color;
-    } else if (runs <= 20) {
+    } else if (runs <= 2) {
       click_errors[3] = click_errors[3] - 1;
       timesArr[3].push(zeitdiff);
       ctx.strokeStyle = CURRENT_DIFFICULTY.middle.color;
-    } else if (runs <= 30) {
+    } else if (runs <= 3) {
       click_errors[2] = click_errors[2] - 1;
       timesArr[2].push(zeitdiff);
       ctx.strokeStyle = CURRENT_DIFFICULTY.medium.color;
-    } else if (runs <= 40) {
+    } else if (runs <= 4) {
       click_errors[1] = click_errors[1] - 1;
       timesArr[1].push(zeitdiff);
       ctx.strokeStyle = CURRENT_DIFFICULTY.hard.color;
@@ -295,7 +295,7 @@ function clickBall() {
       ctx.strokeStyle = CURRENT_DIFFICULTY.extreme.color;
     }
 
-    if (runs < 50) {
+    if (runs < 5) {
       startStudy();
     } else {
       //stopExperiment();
@@ -308,10 +308,17 @@ function clickBall() {
 function doAnotherRun() {
     if (totalRuns === 1) {
         runs = 0;
-        stopExperiment_2();
+        startTimer();
+        setTimeout(() => {
+          stopExperiment_2();
+        }, 6000);
     } else if(totalRuns === 2) {
         runs = 0;
+        startTimer();
+        setTimeout(() => {
         stopExperiment_3();
+      }, 6000);
+        
     } else if (totalRuns === 3){
         stopExperiment();
     }
@@ -320,13 +327,13 @@ function doAnotherRun() {
 
 //Detect clicks on our background and add them to the corresponding click_errors array
 function clickHintergrund() {
-  if (runs <= 10) {
+  if (runs <= 1) {
     click_errors[4] = click_errors[4] + 1;
-  } else if (runs <= 20) {
+  } else if (runs <= 2) {
     click_errors[3] = click_errors[3] + 1;
-  } else if (runs <= 30) {
+  } else if (runs <= 3) {
     click_errors[2] = click_errors[2] + 1;
-  } else if (runs <= 40) {
+  } else if (runs <= 4) {
     click_errors[1] = click_errors[1] + 1;
   } else {
     click_errors[0] = click_errors[0] + 1;

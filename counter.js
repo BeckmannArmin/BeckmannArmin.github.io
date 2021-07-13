@@ -75,6 +75,8 @@ function startTimer() {
     setRemainingPathColor(timeLeft);
 
     if (timeLeft === 0) {
+      timePassed = 0;
+      //timeLeft = TIME_LIMIT;
       onTimesUp();
     }
   }, 1000);
