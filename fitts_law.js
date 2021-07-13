@@ -49,18 +49,16 @@ function initStudy() {
   setTimeout(() => {
     circle.setAttribute("class", "");
     startStudy();
+    drawCanvas();
   }, 6000);
 }
 
 //Start our study
 function startStudy() {
   //Clear all inputs before proceeding
-  drawCanvas();
   clearInputs();
   startZeit = new Date().getTime();
   runs = runs + 1;
-
-  var ball = circle;
 
   var ball = circle;
 
