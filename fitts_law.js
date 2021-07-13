@@ -300,7 +300,9 @@ function clickBall() {
     } else {
       //stopExperiment();
       totalRuns = totalRuns + 1;
-      doAnotherRun();
+      setTimeout(() => {
+        doAnotherRun();
+      }, 6000);
     }
   }
 }
