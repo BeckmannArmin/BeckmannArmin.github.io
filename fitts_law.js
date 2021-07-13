@@ -10,6 +10,7 @@
 
 	var timer = 0;
 	var startZeit;
+    var trial = 0;
 
 	var timesArr = [new Array(),new Array(),new Array(),new Array(),new Array()];
 	var runs = 0;
@@ -138,7 +139,7 @@
 			document.getElementById("size_"+size).innerHTML = "Größe: "+getsize(size)+"px<br/>Fehler: " + click_errors[size] + "<br/>Durchschnittszeit: " + averageTime+" ms";
             // 2) inserts them in our input fields which only we - the authors - see
 			document.getElementById("input_"+size).value = "Größe: "+getsize(size)+"px<br/>click_errors: " + click_errors[size] + "<br/>Durchschnittszeit: " + averageTime;
-			// 3) convert canvas to img and 
+			// 3) convert canvas to img and
 			var dataURL = canvas.toDataURL('image/png');
 			document.getElementById('inp_img').value = dataURL;
 		}
@@ -177,7 +178,9 @@
             //Difference between the time the circle has been clicked and the time we started our expirement
             // e.g. startStudy()
 			var zeitdiff = klickzeit - startZeit;
-
+            // The trial to make the user stay motivated during the experiment
+            trial = trial + 1;
+            $("#trial-label").text("Versuch "+ trial + " von 50");
             //We have to substract 1 from our values because the click on the circle counts somehow
 			if(runs <= 10) {
 				click_errors[4] = click_errors[4] - 1;
@@ -206,7 +209,6 @@
 
     //Detect clicks on our background and add them to the corresponding click_errors array
 	function clickHintergrund() {
-        console.log("click");
 		if(runs <= 10) {
 			click_errors[4] = click_errors[4] + 1;
 		} else if(runs <= 20) {
@@ -324,7 +326,7 @@ var ctx = canvas.getContext("2d");
 var BB = canvas.getBoundingClientRect();
 
 resizeCanvas();
-        
+
 function resizeCanvas() {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
