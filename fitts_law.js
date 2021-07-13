@@ -354,6 +354,7 @@ startStudyBtn.addEventListener("click", function () {
   }
 });
 
+//Method to track the paths between circle clicks
 function drawCanvas() {
   var canvas = document.getElementById("canvas");
   var ctx = canvas.getContext("2d");
